@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start Whoever's Hot | Fantasy NBA on Yahoo | swhbb</title>
+<meta name="description" content="Start Whoever's Hot: a head-to-head points fantasy NBA league on Yahoo. Standings, power rankings and hot takes from the commissioner.">
+<meta property="og:title" content="Start Whoever's Hot | Fantasy NBA">
+<meta property="og:description" content="Start whoever's hot. Be brave. A head-to-head points fantasy NBA league.">
+<meta property="og:image" content="https://swhbb.com/logo.png">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--text:#101828;--blue:#1F6BFF;--orange:#FF6A13;--orange-dk:#C2410C;--soft:#F2F5FB;--line:#E3E8F2}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',Arial,sans-serif;overflow-x:hidden;line-height:1.5}
+a{color:var(--blue);font-weight:700}
+a:hover,a:focus-visible{color:var(--orange-dk)}
+.wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(20px,5vw,48px)}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;font-size:clamp(28px,4vw,36px);letter-spacing:.5px;color:var(--text);text-decoration:none;text-transform:uppercase}
+nav{display:flex;gap:20px;font-size:16px}
+.hero{display:flex;align-items:center;justify-content:space-between;gap:clamp(24px,5vw,56px);padding:clamp(28px,6vw,56px) 0 clamp(32px,6vw,56px)}
+.copy{flex:1 1 0;min-width:0}
+.logo{flex:0 0 auto;width:min(400px,40vw);height:auto;display:block}
+.tag{display:inline-block;margin:0 0 18px;padding:6px 16px;border-radius:6px;background:var(--orange);color:var(--text);font-weight:700;font-size:15px;letter-spacing:.5px;text-transform:uppercase}
+h1{margin:0 0 18px;font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:clamp(52px,9vw,92px);line-height:.92;letter-spacing:.5px}
+h1 span{display:block;background:linear-gradient(90deg,var(--orange),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.1em}
+.lead{font-size:clamp(18px,2.4vw,21px);max-width:520px;font-weight:500;margin:0 0 22px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px;padding:0;list-style:none}
+.chips li{padding:6px 14px;border-radius:6px;font-weight:700;font-size:15px;color:var(--text);background:var(--orange)}
+.chips li:nth-child(odd){background:var(--blue);color:#FFFFFF}
+.chips b{font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;font-size:1.4em}
+.btn{display:inline-block;padding:14px 32px;background:var(--blue);color:#FFFFFF;border-radius:8px;font-weight:700;font-size:18px;text-decoration:none;text-transform:uppercase;letter-spacing:.5px}
+.btn:hover,.btn:focus-visible{background:var(--orange-dk);color:#FFFFFF}
+section{padding:clamp(28px,5vw,48px) 0;border-top:3px solid var(--line)}
+h2{margin:0 0 20px;font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:clamp(34px,5vw,48px);letter-spacing:.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:var(--soft);color:var(--text);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:6px;border-left:8px solid var(--orange)}
+.card h3{margin:0;font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:30px;color:var(--blue)}
+.card p{margin:0;font-weight:500}
+.post{padding:20px 0;border-bottom:2px solid var(--line)}
+.post:last-child{border-bottom:0}
+.post time{font-size:14px;color:var(--orange-dk);font-weight:700}
+.post h3{margin:2px 0 6px;font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:30px}
+.post p{margin:0;font-weight:500;max-width:680px}
+
+.season{background:var(--soft);border-radius:14px;padding:clamp(18px,3vw,26px);margin:0 0 18px;border-left:8px solid var(--blue)}
+.season.pending{border-left-color:var(--orange)}
+.season h3{margin:0;font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:clamp(30px,5vw,40px);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{font-family:'DM Sans',Arial,sans-serif;font-style:normal;font-size:13px;font-weight:700;letter-spacing:.5px;padding:4px 12px;border-radius:999px;background:var(--orange);color:var(--text)}
+.pendingnote{margin:8px 0 0;font-weight:500}
+.podium{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0 8px}
+.spot{border-radius:12px;padding:14px 16px;color:var(--text)}
+.spot small{display:block;font-size:13px;font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+.spot strong{display:block;font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:28px;line-height:1.1;margin-top:2px;overflow-wrap:anywhere}
+.spot.p1{background:#F7C325}
+.spot.p2{background:#C9D1DE}
+.spot.p3{background:#E3A272}
+details{margin-top:12px}
+summary{cursor:pointer;font-weight:700;color:var(--blue);padding:6px 0}
+.tablewrap{overflow-x:auto;margin-top:8px;background:#FFFFFF;border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:320px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:13px;letter-spacing:.5px;text-transform:uppercase;color:var(--orange-dk)}
+td.num,th.num{text-align:right}
+tr:last-child td{border-bottom:0}
+.empty{margin:0;font-weight:500}
+footer{padding:28px 0 8px;font-size:14px;border-top:3px solid var(--line)}
+@media (max-width:760px){.hero{flex-direction:column-reverse;align-items:flex-start}.logo{width:min(320px,80vw);align-self:center}nav{gap:14px;font-size:15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="brand" href="#top">swhbb</a>
+<nav aria-label="Main"><a href="#leagues">League</a><a href="#history">History</a><a href="#news">News</a></nav>
+</header>
+
+<div class="hero" id="top">
+<div class="copy">
+<div class="tag">Fantasy NBA on Yahoo</div>
+<h1>Start whoever's hot.<span>Be brave.</span></h1>
+<p class="lead">A head-to-head points league. Standings, power rankings and hot takes from the commissioner's desk.</p>
+<ul class="chips" aria-label="What swhbb stands for">
+<li><b>S</b>tart</li><li><b>W</b>hoever's</li><li><b>H</b>ot</li><li><b>B</b>e</li><li><b>B</b>rave</li>
+</ul>
+<a class="btn" href="#leagues">See the league</a>
+</div>
+<img class="logo" src="logo.png" width="668" height="800" alt="Start Whoever's Hot: a basketball player dunking a lightning-blue ball in front of flames, with the words Be Brave">
+</div>
+
+<section id="leagues">
+<h2>The league</h2>
+<div class="grid" id="leagueList"></div>
+</section>
+
+<section id="history">
+<h2>League history</h2>
+<div id="seasonList"></div>
+</section>
+
+<section id="news">
+<h2>Latest from the commish</h2>
+<div id="postList"></div>
+</section>
+
+<footer>swhbb.com | Start Whoever's Hot, Be Brave</footer>
+</div>
+
+<script>
+/* ===== EDIT YOUR CONTENT HERE =====
+   LEAGUE HISTORY: add one entry per season, newest first.
+   A finished season looks like this (copy it, then fill it in):
+   {season:"2025-26", champion:"Team name", second:"Team name", third:"Team name",
+    standings:[
+      {team:"Team name", record:"18-4", pf:3120.5},
+      {team:"Another team", record:"15-7", pf:2980}
+    ]}
+   Standings are listed in the order you type them (1st place first). "pf" is points for and is optional.
+   The season with status:"pending" shows a Pending badge until you replace it with results.
+   Add a news post or the Yahoo link the same way as before (see LEAGUES and POSTS below). */
+const SEASONS = [
+  {season:"2026-27", status:"pending"}
+];
+/* ---------- LEAGUE CARD AND NEWS POSTS ----------
+   Add a league or post by copying a line and changing the text.
+   Example post: {date:"2026-10-21", title:"Week 1 power rankings", text:"Short summary of the post.", link:"", linkText:""}
+   Put your Yahoo league link in the league line below (link + linkText).
+   Newest post first. Leave a list empty [] to show a "coming soon" message. */
+const LEAGUES = [
+  {name:"Start Whoever's Hot", info:"Fantasy NBA on Yahoo. Head-to-head, points scoring.", link:"", linkText:"Join on Yahoo"}
+];
+const POSTS = [
+];
+/* ================================== */
+
+function el(tag, cls, text){
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text) e.textContent = text;
+  return e;
+}
+function safeLink(url, label){
+  if (!url || !/^https?:\/\//i.test(url)) return null;
+  const a = el('a', '', label || 'Read more');
+  a.href = url;
+  a.rel = 'noopener';
+  return a;
+}
+const lg = document.getElementById('leagueList');
+if (!LEAGUES.length) {
+  lg.appendChild(el('p', 'empty', 'League details are landing soon.'));
+} else {
+  LEAGUES.forEach(l => {
+    const c = el('div', 'card');
+    c.appendChild(el('h3', '', l.name));
+    if (l.info) c.appendChild(el('p', '', l.info));
+    const a = safeLink(l.link, l.linkText || 'View league');
+    if (a) c.appendChild(a);
+    lg.appendChild(c);
+  });
+}
+
+const sl = document.getElementById('seasonList');
+if (!SEASONS.length) {
+  sl.appendChild(el('p', 'empty', 'Season history will appear here.'));
+} else {
+  SEASONS.forEach(x => {
+    const wrap = el('article', 'season' + (x.status === 'pending' ? ' pending' : ''));
+    const h = el('h3', '', x.season + ' season');
+    if (x.status === 'pending') h.appendChild(el('span', 'badge', 'PENDING'));
+    wrap.appendChild(h);
+    if (x.status === 'pending') {
+      wrap.appendChild(el('p', 'pendingnote', 'The season is yet to be played. Standings and the podium will be posted here.'));
+    } else {
+      const pod = el('div', 'podium');
+      [['p1','Champion',x.champion],['p2','2nd place',x.second],['p3','3rd place',x.third]].forEach(r => {
+        const b = el('div', 'spot ' + r[0]);
+        b.appendChild(el('small', '', r[1]));
+        b.appendChild(el('strong', '', r[2] || 'TBC'));
+        pod.appendChild(b);
+      });
+      wrap.appendChild(pod);
+      if (x.standings && x.standings.length) {
+        const d = document.createElement('details');
+        d.appendChild(el('summary', '', 'Regular season standings'));
+        const tw = el('div', 'tablewrap');
+        const t = document.createElement('table');
+        const hasPf = x.standings.some(r => r.pf !== undefined && r.pf !== '');
+        const hr = document.createElement('tr');
+        ['#','Team','Record'].concat(hasPf ? ['Points for'] : []).forEach((c, i) => {
+          const th = el('th', i === 0 || c === 'Record' || c === 'Points for' ? 'num' : '', c);
+          hr.appendChild(th);
+        });
+        const thead = document.createElement('thead'); thead.appendChild(hr); t.appendChild(thead);
+        const tb = document.createElement('tbody');
+        x.standings.forEach((r, i) => {
+          const tr = document.createElement('tr');
+          tr.appendChild(el('td', 'num', String(i + 1)));
+          tr.appendChild(el('td', '', r.team));
+          tr.appendChild(el('td', 'num', r.record || ''));
+          if (hasPf) tr.appendChild(el('td', 'num', r.pf !== undefined ? Number(r.pf).toLocaleString('en-GB') : ''));
+          tb.appendChild(tr);
+        });
+        t.appendChild(tb); tw.appendChild(t); d.appendChild(tw); wrap.appendChild(d);
+      }
+    }
+    sl.appendChild(wrap);
+  });
+}
+const pl = document.getElementById('postList');
+if (!POSTS.length) {
+  pl.appendChild(el('p', 'empty', 'First post coming soon.'));
+} else {
+  POSTS.forEach(p => {
+    const d = el('article', 'post');
+    if (p.date) {
+      const t = el('time', '', new Date(p.date + 'T00:00:00').toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}));
+      t.setAttribute('datetime', p.date);
+      d.appendChild(t);
+    }
+    d.appendChild(el('h3', '', p.title));
+    if (p.text) d.appendChild(el('p', '', p.text));
+    const a = safeLink(p.link, p.linkText);
+    if (a) d.appendChild(a);
+    pl.appendChild(d);
+  });
+}
+</script>
+</body>
+</html>

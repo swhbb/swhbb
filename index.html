@@ -72,6 +72,21 @@ th{font-size:13px;letter-spacing:.5px;text-transform:uppercase;color:var(--orang
 td.num,th.num{text-align:right}
 tr:last-child td{border-bottom:0}
 .empty{margin:0;font-weight:500}
+.rankgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.rankcard{position:relative;background:var(--soft);border-radius:16px;padding:18px 16px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.rankpos{position:absolute;top:10px;left:12px;font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;font-size:22px;color:var(--line)}
+.ranklogo{width:84px;height:84px;border-radius:50%;object-fit:cover;background:#FFFFFF;border:3px solid #FFFFFF;box-shadow:0 0 0 3px var(--blue);margin-top:10px}
+.rankcard.tier-diamond .ranklogo{box-shadow:0 0 0 3px #1F6BFF}
+.rankcard.tier-platinum .ranklogo{box-shadow:0 0 0 3px #7C8BA0}
+.rankcard.tier-bronze .ranklogo{box-shadow:0 0 0 3px var(--orange)}
+.rankcard.tier-none .ranklogo{box-shadow:0 0 0 3px var(--line)}
+.rankteam{font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:19px;line-height:1.05;overflow-wrap:anywhere}
+.rankrating{font-weight:700;font-size:15px;color:var(--text)}
+.ranklevel{display:inline-block;padding:3px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.tier-diamond .ranklevel{background:#E7F0FF;color:#1F6BFF}
+.tier-platinum .ranklevel{background:#ECEFF4;color:#55607A}
+.tier-bronze .ranklevel{background:#FFE9DB;color:var(--orange-dk)}
+.tier-none .ranklevel{background:var(--line);color:#6B7589}
 footer{padding:28px 0 8px;font-size:14px;border-top:3px solid var(--line)}
 @media (max-width:760px){.hero{flex-direction:column-reverse;align-items:flex-start}.logo{width:min(320px,80vw);align-self:center}nav{gap:14px;font-size:15px}}
 </style>
@@ -80,7 +95,7 @@ footer{padding:28px 0 8px;font-size:14px;border-top:3px solid var(--line)}
 <div class="wrap">
 <header>
 <a class="brand" href="#top">swhbb</a>
-<nav aria-label="Main"><a href="#leagues">League</a><a href="#history">History</a><a href="#news">News</a></nav>
+<nav aria-label="Main"><a href="#rankings">Rankings</a><a href="#leagues">League</a><a href="#history">History</a><a href="#news">News</a></nav>
 </header>
 
 <div class="hero" id="top">
@@ -95,6 +110,11 @@ footer{padding:28px 0 8px;font-size:14px;border-top:3px solid var(--line)}
 </div>
 <img class="logo" src="logo.png" width="668" height="800" alt="Start Whoever's Hot: a basketball player dunking a lightning-blue ball in front of flames, with the words Be Brave">
 </div>
+
+<section id="rankings">
+<h2>Preseason power rankings</h2>
+<div class="rankgrid" id="rankList"></div>
+</section>
 
 <section id="leagues">
 <h2>The league</h2>
@@ -126,6 +146,21 @@ footer{padding:28px 0 8px;font-size:14px;border-top:3px solid var(--line)}
    Standings are listed in the order you type them (1st place first). "pf" is points for and is optional.
    The season with status:"pending" shows a Pending badge until you replace it with results.
    Add a news post or the Yahoo link the same way as before (see LEAGUES and POSTS below). */
+/* PRESEASON POWER RANKINGS: one row per team, best first.
+   "rating" and "level" come from Yahoo's team rankings (leave both "" if a team has none yet).
+   "logo" is the file name of that team's logo in the  folder. */
+const RANKINGS = [
+  {team:"Philly Bulldogs", rating:983, level:"Diamond", logo:"logos/philly-bulldogs.png"},
+  {team:"Brett's Best Team", rating:955, level:"Diamond", logo:"logos/bretts-best-team.png"},
+  {team:"Monstars", rating:897, level:"Platinum", logo:"logos/monstars.png"},
+  {team:"Team Lala", rating:856, level:"Platinum", logo:"logos/team-lala.png"},
+  {team:"World B. Tree", rating:624, level:"Silver", logo:"logos/world-b-tree.png"},
+  {team:"#bronzebutillwintrustme", rating:596, level:"Bronze", logo:"logos/bronzebutillwintrustme.png"},
+  {team:"Matias's Marvelous Team", rating:594, level:"Bronze", logo:"logos/matias-marvelous-team.png"},
+  {team:"jay's Best Team", rating:590, level:"Bronze", logo:"logos/jays-best-team.png"},
+  {team:"Flying Chickens", rating:"", level:"", logo:"logos/flying-chickens.png"},
+  {team:"Cereal Killas", rating:"", level:"", logo:"logos/cereal-killas.png"}
+];
 const SEASONS = [
   {season:"2026-27", status:"pending", lineup:["Team Lala","Philly Bulldogs","Brett's Best Team","jay's Best Team","World B. Tree","#bronzebutillwintrustme","Monstars","Matias's Marvelous Team","Flying Chickens","Cereal Killas"]}
 ];
@@ -154,6 +189,27 @@ function safeLink(url, label){
   a.rel = 'noopener';
   return a;
 }
+const rl = document.getElementById('rankList');
+if (!RANKINGS.length) {
+  rl.appendChild(el('p', 'empty', 'Rankings will appear here.'));
+} else {
+  RANKINGS.forEach((r, i) => {
+    const tier = (r.level || 'none').toLowerCase();
+    const c = el('div', 'rankcard tier-' + tier);
+    c.appendChild(el('span', 'rankpos', '#' + (i + 1)));
+    const img = document.createElement('img');
+    img.className = 'ranklogo';
+    img.src = r.logo;
+    img.width = 84; img.height = 84;
+    img.alt = r.team + ' logo';
+    c.appendChild(img);
+    c.appendChild(el('div', 'rankteam', r.team));
+    c.appendChild(el('span', 'ranklevel', r.level || 'Unranked'));
+    c.appendChild(el('div', 'rankrating', r.rating !== '' && r.rating !== undefined ? 'Rating ' + r.rating : ' '));
+    rl.appendChild(c);
+  });
+}
+
 const lg = document.getElementById('leagueList');
 if (!LEAGUES.length) {
   lg.appendChild(el('p', 'empty', 'League details are landing soon.'));
